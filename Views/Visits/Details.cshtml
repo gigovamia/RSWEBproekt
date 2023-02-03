@@ -1,0 +1,71 @@
+﻿@model proekt.Models.Visit
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<style>
+
+    .detal {
+        width: 50%;
+        float: left;
+        margin: auto;
+    }
+
+    .slika {
+        width: 50%;
+        float: left;
+    }
+
+    .info {
+        background: #fbfafd;
+        font-family: Arial;
+        margin-top: 20px;
+    }
+
+</style>
+
+<h4>@Html.DisplayFor(model => model.Name)</h4>
+
+<div class="detal">
+
+    <dl class="row">
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <div class="info">
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.City)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.City)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Address)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Address)
+            </dd>
+        </div>
+
+    </dl>
+</div>
+
+<div class="slika">
+    <img src="@Html.DisplayFor(model => model.Picture)" class="d-block w-100 rounded" alt="Sample Photo" width="600" height="450 " />
+</div>
+<div class="crud">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" class="btn btn-outline-danger " asp-route-id="@Model?.Id">Edit</a>
+    }
+    <a asp-action="Index" class="btn btn-outline-danger ">Back to List</a>
+</div>
+

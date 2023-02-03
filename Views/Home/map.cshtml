@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewData["Title"] = "Map";
+}
+
+
+<head runat="server">  
+    <title></title>  
+  
+     <!DOCTYPE link href="https://maps/documentation/javascript/examples/default.css" rel="stylesheet" />  
+<html>  
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script> 
+    
+    <script>  
+     var mapcode;  
+        var diag;  
+        function initialize() {  
+            const myLatLng = { lat: 41.6086, lng: 21.7453};
+            //41.9531° N, 21.4865
+            
+            const Tino = {lat:41.0761,lng: 20.8059};
+            const Hilton = {lat:41.9903,lng: 21.4732};
+            const Mariot = {lat:41.9959,lng: 21.4303};
+             const krusevo = {lat:41.36371,lng: 21.24873};
+             
+             const park = {lat:41.7447,lng: 22.1907};
+            mapcode = new google.maps.Geocoder();  
+            var lnt = new google.maps.LatLng(41.6086, 21.7453); 
+            //41.9981° N, 21.4254°
+            const map = new google.maps.Map(document.getElementById("map_populate"), {
+            zoom: 9,
+            center: myLatLng,
+            });
+            const image =
+    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+  
+            var hint = new google.maps.Marker({  
+                        diag: diag,  
+                        position: lnt,  
+                    });  
+            //this.getmap();
+           
+             new google.maps.Marker({
+            position: Tino,
+            map,
+            title: "Panorama Hotel & Spa",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+            });
+             new google.maps.Marker({
+            position: krusevo,
+            map,
+            title: "Hotel Tino Sveti Stefan",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+            });
+              new google.maps.Marker({
+            position: Hilton,
+            map,
+            title: "DoubleTree by Hilton Skopje",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+            });
+              new google.maps.Marker({
+            position: park,
+            map,
+            title: "Hotel Park Shtip",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+            });
+               new google.maps.Marker({
+            position: Mariot,
+            map,
+            title: "Skopje Marriott Hotel",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" }
+            });
+
+            
+            //Guest houses
+             const Forest = {lat:41.7082,lng: 20.7615};
+             const sunny = {lat:41.9507176357,lng: 21.4213054};
+             const melnicani = {lat:41.0444624,lng: 21.2494771};
+             const kliment = {lat:41.11264,lng: 20.797012};
+
+              new google.maps.Marker({
+            position: Forest,
+            map,
+            title: "Forest Vila, Mavrovo",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" }
+            });
+             new google.maps.Marker({
+            position: sunny,
+            map,
+            title: "Sunny House",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" }
+            });
+             new google.maps.Marker({
+            position: kliment,
+            map,
+            title: "Villa & Winery Mal Sveti Kliment",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" }
+            });
+               new google.maps.Marker({
+            position: melnicani,
+            map,
+            title: "Villa Serz",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" }
+            });
+
+            //Visit
+            const matka={lat:41.9507,lng:21.2996};
+            new google.maps.Marker({
+            position: matka,
+            map,
+            title: "Matka Canyon",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png" }
+            });
+
+             const trpejca={lat:40.9609,lng:20.7830};
+            new google.maps.Marker({
+            position: trpejca,
+            map,
+            title: "Trpejca",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png" }
+            });
+
+              const mavr={lat:41.6549,lng:20.7339};
+            new google.maps.Marker({
+            position: mavr,
+            map,
+            title: "Mavrovo National Park",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png" }
+            });
+               const kokino={lat:42.2630,lng:21.9860};
+            new google.maps.Marker({
+            position: kokino,
+            map,
+            title: "Kokino Observatory ",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png" }
+            });
+              const stobi={lat:41.5523,lng:21.9754};
+            new google.maps.Marker({
+            position: stobi,
+            map,
+            title: "Stobi Archaeological Site ",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png" }
+            });
+              const golem={lat:40.8685,lng:20.9887};
+            new google.maps.Marker({
+            position: golem,
+            map,
+            title: "Snake Island ",
+            icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/pink-dot.png" }
+            });
+
+
+        }  
+            
+        google.maps.event.addDomListener(window, 'load', initialize); 
+    </script>  
+  
+    </html>  
+</head>
+<body>  
+    <form id="form1" runat="server">  
+     
+       
+          
+    <div id="map_populate" style="width:100%; height:500px; border: 5px solid #5E5454;">  
+    </div>  
+    </form> 
+    </body>

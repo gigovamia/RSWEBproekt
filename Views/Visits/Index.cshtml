@@ -1,0 +1,89 @@
+﻿@model proekt.ViewModels.CityViewModel
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h2 class="naslov">Places to visit in Macedonia</h2>
+<p>Macedonia is one of the least-traveled countries in Europe.
+    Yet, this mountainous, landlocked country has so much to offer!</p>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-outline-dark">Create New</a>
+    </p>
+}
+
+<!--<form asp-controller="Visits" asp-action="Index">
+    <input type="text" name="SearchString" />
+    <input type="submit" value="Filter" />
+</form>-->
+
+<form asp-controller="Visits" asp-action="Index" style="margin-bottom:100px;">
+    <p>
+        <select asp-for="HotelCity" asp-items="Model.Cities">
+            <option value="">All cities </option>
+
+        </select>
+
+        <input type="submit" class="btn btn-outline-dark btn-sm" value="Filter" />
+
+        
+    </p>
+
+</form>
+
+<style>
+    .card {
+        font -family: 'Nunito ', sans -serif;
+        background: #fbfafd;
+        height: 350px;
+        width: 300px;
+        float: left;
+        margin-left: 60px;
+        margin-bottom: 90px;
+        margin-top:-70px;
+    }
+
+    .naslov {
+        color: brown;
+    }
+
+    .golemina {
+        font-size: small;
+    }
+</style>
+<div class="card-columns">
+    @foreach (var item in Model.Visits)
+    {
+        <div class="card">
+            <div class="card-body">
+                <div class="img">
+                    <img src="@(item.Picture)"
+                     height="200" width="95%"
+                     asp-append-version="true" />
+                </div>
+                <p class="golemina">
+                    <br>
+                    <br>Name: @Html.DisplayFor(modelItem => item.Name)
+                    <br> 
+                    @Html.DisplayFor(modelItem => item.Address)
+                    <br>
+                    <a asp-action="Details" class="btn btn-outline-dark btn-sm" asp-route-id="@item.Id">Details</a>
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" class="btn btn-outline-dark btn-sm" asp-route-id="@item.Id">Edit</a>
+
+                        <a asp-action="Delete" class="btn btn-outline-dark btn-sm" asp-route-id="@item.Id">Delete</a>
+                    }
+
+
+                </p>
+            </div>
+        </div>
+
+
+    }
